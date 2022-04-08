@@ -1,4 +1,3 @@
-
 from django.db import models
 from django.utils.timezone import localtime
 
@@ -31,14 +30,12 @@ class Visit(models.Model):
             )
         )
 
-
     def is_visit_long(self, minutes=15):
         """"""
-        if self.get_duration()/60 >= minutes:
+        if self.get_duration() / 60 >= minutes:
             return True
         else:
             return False
-
 
     def get_duration(self):
         """return duration in seconds"""
@@ -50,10 +47,9 @@ class Visit(models.Model):
         else:
             end_time_duration = localtime()
 
-        delta = end_time_duration  - entered_at
+        delta = end_time_duration - entered_at
         seconds = delta.total_seconds()
         return seconds
-
 
     def format_duration(self):
         duration = self.get_duration()

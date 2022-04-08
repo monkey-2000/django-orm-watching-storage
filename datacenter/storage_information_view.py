@@ -5,15 +5,6 @@ from datacenter.models import Visit
 from django.shortcuts import render
 
 
-# def get_duration(visit):
-#     """duration in seconds"""
-#     now = django.utils.timezone.localtime()
-#     entered_at = django.utils.timezone.localtime(value=visit.entered_at)
-#     delta = now - entered_at
-#     d_seconds = delta.total_seconds()
-#     return d_seconds
-#
-#
 def format_duration(duration):
     hours = int(duration // 3600)
     duration %= 3600
@@ -27,8 +18,7 @@ def get_visitor_in_storage_now():
     active_visits_for_request = []
 
     for visit in active_storage_visitors:
-        #duration = get_duration(visit)
-        duration = visit
+
         answer = {
             'who_entered': visit.passcard.owner_name,
             'entered_at': visit.entered_at,
@@ -40,15 +30,8 @@ def get_visitor_in_storage_now():
 
 
 def storage_information_view(request):
-    # Программируем здесь
+
     non_closed_visits = get_visitor_in_storage_now()
-    # non_closed_visits = [
-    #     {
-    #         'who_entered': 'Richard Shaw',
-    #         'entered_at': '11-04-2018 25:34',
-    #         'duration': '25:03',
-    #     }
-    # ]
     context = {
         'non_closed_visits': non_closed_visits  # не закрытые посещения
     }
