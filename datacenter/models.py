@@ -1,3 +1,5 @@
+from datetime import time
+
 from django.db import models
 from django.utils.timezone import localtime
 
@@ -53,6 +55,7 @@ class Visit(models.Model):
         seconds = delta.total_seconds()
         return seconds
 
+
     def format_duration(self):
         duration = self.get_duration()
         hours = int(duration // 3600)
@@ -60,4 +63,4 @@ class Visit(models.Model):
         min = int(duration // 60)
         duration %= 60
         seconds = int(duration)
-        return '{:2d}:{:2d}:{:2d}'.format(hours, min, seconds)
+        return '{:0=1}:{:0=2}:{:0=2}'.format(hours, min, seconds)
