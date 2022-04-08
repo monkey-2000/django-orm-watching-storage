@@ -1,4 +1,3 @@
-from datetime import time
 
 from django.db import models
 from django.utils.timezone import localtime
@@ -42,7 +41,7 @@ class Visit(models.Model):
 
 
     def get_duration(self):
-        """duration in seconds"""
+        """return duration in seconds"""
 
         entered_at = localtime(value=self.entered_at)
 
