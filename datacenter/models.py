@@ -50,11 +50,20 @@ class Visit(models.Model):
         seconds = delta.total_seconds()
         return seconds
 
-    def format_duration(self):
+    def format_duration(self, first_format=True):
+        """Create visit duration record in text format: "0:00:00" by default and
+        "0ч0мин" if first_format= False"""
+
         duration = self.get_duration()
-        hours = int(duration // 3600)
-        duration %= 3600
-        min = int(duration // 60)
-        duration %= 60
-        seconds = int(duration)
-        return '{:0=1}:{:0=2}:{:0=2}'.format(hours, min, seconds)
+        if first_format:
+            hours = int(duration // 3600)
+            duration %= 3600
+            min = int(duration // 60)
+            duration %= 60
+            seconds = int(duration)
+            return '{:0=1}:{:0=2}:{:0=2}'.format(hours, min, seconds)
+        else:
+            hours = int(duration // 3600)
+            duration %= 3600
+            min = int(duration // 60)
+            return '{}ч {}мин'.format(hours, min)
