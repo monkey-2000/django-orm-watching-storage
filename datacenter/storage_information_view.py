@@ -1,11 +1,15 @@
 
-from datacenter.model_interaction_tools import get_visitor_in_storage_now
+from datacenter.model_interaction_tools import serialize_visits
 from django.shortcuts import render
+
+from datacenter.models import Visit
 
 
 def storage_information_view(request):
+    active_storage_visitors = Visit.objects.filter(leaved_at=None)
 
-    non_closed_visits = get_visitor_in_storage_now()
+    non_closed_visits = serialize_visits(active_storage_visitors)
+
     context = {
         'non_closed_visits': non_closed_visits
     }

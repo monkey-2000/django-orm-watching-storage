@@ -1,18 +1,31 @@
 from datacenter.models import Visit
 
 
-def get_visitor_in_storage_now():
-    active_storage_visitors = Visit.objects.filter(leaved_at=None)
+def serialize_visits(visits):
 
-    active_visits_for_request = []
+    serialized_visits = []
 
-    for visit in active_storage_visitors:
+    for visit in visits:
 
         answer = {
             'who_entered': visit.passcard.owner_name,
             'entered_at': visit.entered_at,
             'duration': visit.format_duration(first_format=False),
         }
-        active_visits_for_request.append(answer)
+        serialized_visits.append(answer)
 
-    return active_visits_for_request
+    return serialized_visits
+
+
+def serialize_this_passcard_visits(passcard):
+    serialized_this_passcard_visits = []
+    visits = Visit.objects.filter(passcard=passcard)
+    for visit in visits:
+        visit_time_report = {
+            'entered_at': visit.entered_at,
+            'duration': visit.format_duration(),
+            'is_strange': visit.is_visit_long()
+        }
+        serialized_this_passcard_visits.append(visit_time_report)
+
+    return serialized_this_passcard_visits
