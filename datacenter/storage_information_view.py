@@ -1,5 +1,5 @@
 
-from datacenter.model_interaction_tools import serialize_visits
+from datacenter.seralizers import serialize_visits
 from django.shortcuts import render
 
 from datacenter.models import Visit

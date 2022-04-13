@@ -1,4 +1,4 @@
-from datacenter.model_interaction_tools import serialize_this_passcard_visits
+from datacenter.seralizers import serialize_this_passcard_visits
 from datacenter.models import Passcard
 from django.shortcuts import render
 

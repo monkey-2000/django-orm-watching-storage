@@ -10,7 +10,7 @@ def serialize_visits(visits):
         answer = {
             'who_entered': visit.passcard.owner_name,
             'entered_at': visit.entered_at,
-            'duration': visit.format_duration(first_format=False),
+            'duration': visit.format_duration(with_colons=False),
         }
         serialized_visits.append(answer)
 
