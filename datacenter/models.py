@@ -52,7 +52,7 @@ class Visit(models.Model):
 
     def format_duration(self, with_colons=True):
         """Create visit duration record in text format: "0:00:00" by default and
-        "0ч0мин" if first_format= False"""
+        "0ч0мин" if with_colons= False"""
 
         duration = self.get_duration()
         if with_colons:
