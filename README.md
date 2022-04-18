@@ -7,12 +7,12 @@
 
 ### Как установить
 [Скачать файлы проекта.В директории проекта создать файл .env с переменными:
-DEFAULT_HOST
-DEFAULT_PORT
-DEFAULT_NAME
-DEFAULT_USER
-DEFAULT_PASSWORD
-SECRET_KEY
+DEFAULT_HOST,
+DEFAULT_PORT,
+DEFAULT_NAME,
+DEFAULT_USER,
+DEFAULT_PASSWORD,
+SECRET_KEY.
 Для работы сайта необходимо задать значения, позволяющие получить доступ к базе данных (см. на сайте [dvmn.org](dvmn.org)). 
 Также в файле .env указать режим отладки DEBUG=true/false]
 
