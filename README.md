@@ -17,6 +17,22 @@ Python3 должен быть уже установлен.
 ```
 pip install -r requirements.txt
 ```
+### Пример запуска скрипта
+
+Cайт можно запустить на локальном сервере (localhost) командой:```python manage.py runserver 0.0.0.0:8000```
+В случае удачного выполнения команды в терминале будет выведено следующее сообщение:
+
+```
+Watching for file changes with StatReloader
+Performing system checks...
+
+System check identified no issues (0 silenced).
+[current date nad time]
+Django version 3.2.12, using settings 'project.settings'
+Starting development server at http://[localhost]:8000/
+Quit the server with CONTROL-C.
+```
+
 ### Цель проекта
 
 Код написан в образовательных целях на онлайн-курсе для веб-разработчиков [dvmn.org](https://dvmn.org/).
