@@ -1,3 +1,4 @@
 DB_URL='postgres://USER:PASSWORD@HOST:PORT/NAME'
 SECRET_KEY=''
 DEBUG=true
+ALLOWED_HOSTS = ['.localhost', '127.0.0.1']
