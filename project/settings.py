@@ -6,7 +6,9 @@ import dj_database_url
 env = Env()
 env.read_env()
 
-DATABASES= {'default': dj_database_url.config(default=env('DB_URL'))}
+DATABASES = {
+    'default': dj_database_url.config(default=env('DB_URL'))
+}
 
 INSTALLED_APPS = ['datacenter']
 
@@ -26,7 +28,6 @@ TEMPLATES = [
         'APP_DIRS': True,
     },
 ]
-
 
 USE_L10N = True
 

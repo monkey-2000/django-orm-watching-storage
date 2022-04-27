@@ -1,4 +1,3 @@
-
 from datacenter.seralizers import serialize_visits
 from django.shortcuts import render
 

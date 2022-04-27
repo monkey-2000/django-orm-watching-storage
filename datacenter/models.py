@@ -14,8 +14,6 @@ class Passcard(models.Model):
         return f'{self.owner_name} (inactive)'
 
 
-
-
 class Visit(models.Model):
     created_at = models.DateTimeField(auto_now=True)
     passcard = models.ForeignKey(Passcard, on_delete=models.CASCADE)
@@ -33,11 +31,15 @@ class Visit(models.Model):
         )
 
     def is_visit_long(self, minutes=15):
-        """"""
+        """ The function checks the duration of the visit.
+
+        Return True if visit duration more than value of minutes param.
+
+       """
         return self.get_duration() / 60 >= minutes
 
     def get_duration(self):
-        """return duration in seconds"""
+        """Count duration of visit and return duration in seconds."""
 
         entered_at = localtime(value=self.entered_at)
 
@@ -51,8 +53,12 @@ class Visit(models.Model):
         return seconds
 
     def format_duration(self, with_colons=True):
-        """Create visit duration record in text format: "0:00:00" by default and
-        "0ч0мин" if with_colons= False"""
+        """Create visit duration record.
+
+        Create visit duration record in text format: "0:00:00" by default and
+        "0ч0мин" if with_colons= False
+
+        """
 
         duration = self.get_duration()
         if with_colons:

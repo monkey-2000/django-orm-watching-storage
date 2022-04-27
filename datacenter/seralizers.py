@@ -2,15 +2,16 @@ from datacenter.models import Visit
 
 
 def serialize_visits(visits):
+    '''Return list of dictionaries from visits.'''
 
     serialized_visits = []
 
     for visit in visits:
 
         answer = {
-            'who_entered': visit.passcard.owner_name,
-            'entered_at': visit.entered_at,
-            'duration': visit.format_duration(with_colons=False),
+            "who_entered": visit.passcard.owner_name,
+            "entered_at": visit.entered_at,
+            "duration": visit.format_duration(with_colons=False),
         }
         serialized_visits.append(answer)
 
@@ -18,6 +19,8 @@ def serialize_visits(visits):
 
 
 def serialize_this_passcard_visits(passcard):
+    '''Return list of dictionaries from passcard.'''
+
     serialized_this_passcard_visits = []
     visits = Visit.objects.filter(passcard=passcard)
     for visit in visits:
